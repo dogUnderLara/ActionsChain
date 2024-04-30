@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+   <extension point="org.eclipse.ui.commands">
+    <command name="Remove All Comments"
+        defaultHandler="com.abap.actionsChain.views.commands.Actions"
+        description="Removes all comments in source code"
+        categoryId="org.eclipse.jdt.ui.category.source"
+        id="com.abap.actionsChain.Test">
+   </command>
+</extension>
+
+
+
+   <extension
+         point="org.eclipse.ui.bindings">
+      <key
+            commandId="com.abap.actionsChain.Test"
+            schemeId="org.eclipse.ui.defaultAcceleratorConfiguration"
+            sequence="M1+9">
+      </key>
+   </extension>
+   
+   
+   
+   <extension
+         point="org.eclipse.ui.views">
+      <view
+            allowMultiple="false"
+            category="com.sap.adt.views"
+            class="com.abap.actionsChain.views.View"
+            icon="platform:/plugin/org.eclipse.ui.views/icons/full/eview16/outline_co.png"
+            id="com.abap.actionsChain.view"
+            inject="false"
+            name="Action Chain"
+            restorable="true">
+      </view>
+   </extension>
+   
+   
+   <extension
+         point="org.eclipse.core.runtime.preferences">
+      <initializer
+            class="com.abap.actionsChain.preferences.PreferenceInitilizer">
+      </initializer>
+   </extension>
+   
+   
+   
+   
+   <extension
+         point="com.sap.adt.destinations.logonListeners">
+      <listener
+            class="com.abap.actionsChain.views.LogonListenerHandler">
+      </listener>
+   </extension>
+   
+   
+   
+   
+   
+      <extension
+         point="com.sap.adt.tools.abapsource.ui.processAfterSourcePageLoaded">
+      <class
+            name="com.abap.actionsChain.views.AbapPageLoadListener">
+      </class>
+   </extension>
+   
+   
+   
+   
+   
+      <extension
+         point="com.sap.adt.activation.ui.activationSuccessListener">
+      <onActivationSuccess
+            class="com.abap.actionsChain.views.ActivationSuccessListenerHandler">
+      </onActivationSuccess>
+   </extension>
+    
+    
+    
+    
+      <extension
+            point="org.eclipse.ui.preferencePages">
+         <page
+               category="com.sap.adt.tools.core.ui.preferencePages.ABAP"
+               class="com.abap.actionsChain.preferences.PreferencePage"
+               id="com.abap.actionsChain.preferences.PreferencesPage"
+               name="Classic Outline">
+         </page>
+      </extension>
+
+
+      
+      
+      
+      
+
+</plugin>
